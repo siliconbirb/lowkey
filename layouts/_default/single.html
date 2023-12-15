@@ -4,10 +4,21 @@
   <header class="flex flex-col gap-2">
     <h2 class="title-large">{{ .Title }}</h2>
 
-    <div class="meta">
+    <div class="meta items-center">
       {{/* Publish date */}}
+      <!-- <time datetime="{{ .PublishDate }}" title='{{ .PublishDate.Format "Mon, Jan 2, 2006, 3:04 PM MST" }}'> -->
       <time datetime="{{ .PublishDate }}" title='{{ .PublishDate.Format "Mon, Jan 2, 2006, 3:04 PM MST" }}'>
-        {{ .PublishDate.Format "02/01/2006" }} - {{ printf (i18n "estimatedReadingTime") .ReadingTime }}
+        <div class="flex flex-row gap-3 items-center">
+          <div class="flex flex-row gap-1 items-center">
+            <span class="theme-icon">{{ partial "utils/icon" "calendar" }}</span>
+            {{ .PublishDate.Format "02/01/2006" }}
+          </div>
+          <div class="flex flex-row gap-1 items-center">
+            <span class="theme-icon">{{ partial "utils/icon" "open-book" }}</span>
+            {{ printf (i18n "estimatedReadingTime") .ReadingTime }}
+          </div>
+        </div>
+
       </time>
 
       {{/* Categories */}} 

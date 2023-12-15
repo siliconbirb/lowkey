@@ -4,13 +4,16 @@
 {{ $paginator := .Paginate $pages }}
 
 <div class="py-2 flex flex-col gap-1">
-  <h3 class="title-small">{{ i18n "latestPosts" }}</h3>
+<!-- <h3 class="title-small">{{ i18n "latestPosts" }}</h3> -->
+  <h3 class="title-small">{{ .Title }}</h3>
 </div>
+
+<section>{{ .Content }}</section>
 
 <hr/>
 
 <section class="pb-10 flex flex-col gap-10">
-  {{ range $index, $pages := $paginator.Pages }} 
+  {{ range $index, $pages := $paginator.Pages }}
     {{ partial "list/default" . }} 
   {{ end }}
 </section>
